@@ -1,0 +1,10 @@
+{
+  "name": "yfetch",
+  "author": "figsoda <figsoda@pm.me>",
+  "scripts": {
+    "all": "scripts/build && echo 'Testing yfetch...' && ./yfetch > /dev/null && ./yfetch",
+    "build": "scripts/build",
+    "test": "echo 'Testing yfetch...' && ./yfetch > /dev/null",
+    "start": "./yfetch"
+  }
+}

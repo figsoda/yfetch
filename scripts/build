@@ -1,0 +1,10 @@
+#!/bin/sh
+
+echo "Building yfetch..."
+
+if [ -x yfetch ]; then
+    echo "Finished building yfetch"
+else
+    echo "Failed to build yfetch"
+    exit 1
+fi

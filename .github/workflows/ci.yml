@@ -1,0 +1,75 @@
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  build-and-test:
+    name: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install nix
+        uses: cachix/install-nix-action@v18
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+
+      - name: build
+        run: |
+          make build
+
+      - name: test
+        run: |
+          make test
+
+  npm-build-and-test:
+    name: npm-build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install nix
+        uses: cachix/install-nix-action@v18
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+
+      - name: build
+        run: |
+          npm run build
+
+      - name: test
+        run: |
+          npm test
+
+  yarn-build-and-test:
+    name: yarn-build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install nix
+        uses: cachix/install-nix-action@v18
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+
+      - name: build
+        run: |
+          yarn build
+
+      - name: test
+        run: |
+          yarn test
+
+  why:
+    name: why
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: not
+        run: |
+          echo not
